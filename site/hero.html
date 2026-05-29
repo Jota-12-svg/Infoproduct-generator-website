@@ -50,7 +50,7 @@ body::-webkit-scrollbar{display:none}
 @keyframes subtleDrift{0%,100%{transform:translate(0,0)}25%{transform:translate(14px,-22px)}50%{transform:translate(-10px,12px)}75%{transform:translate(18px,8px)}}
 @keyframes ping{75%,100%{transform:scale(2.2);opacity:0}}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-@keyframes shimmerPass{from{transform:translateX(-100%) skewX(-15deg)}to{transform:translateX(220%) skewX(-15deg)}}
+@keyframes shimmerPass{from{transform:translateX(-200%)}to{transform:translateX(450%)}}
 @keyframes floatUp{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.015)}}
 @keyframes scanLine{0%{transform:translateY(-100%);opacity:.7}100%{transform:translateY(400%);opacity:0}}
 
@@ -80,7 +80,7 @@ nav.navbar.scrolled{background:rgba(3,3,4,.88);backdrop-filter:blur(24px);-webki
 .btn-beam .beam-inner{position:relative;z-index:10;display:flex;align-items:center;gap:.55rem;padding:.65rem 1.5rem;border-radius:9999px;background:var(--color-bg);border:1px solid rgba(255,255,255,.1);font-family:var(--font-body);font-size:.8rem;font-weight:600;color:#fff;transition:border-color .3s,background .3s,box-shadow .3s;letter-spacing:.02em}
 .btn-beam:hover .beam-inner{border-color:rgba(51,210,255,.4);background:rgba(51,210,255,.05);box-shadow:0 0 24px rgba(51,210,255,.15)}
 .beam-shimmer-wrap{position:absolute;inset:0;border-radius:9999px;overflow:hidden;pointer-events:none}
-.beam-shimmer-wrap::after{content:'';position:absolute;top:0;left:0;height:100%;width:100%;transform:translateX(-100%) skewX(-15deg);background:linear-gradient(to right,transparent,rgba(255,255,255,.16),transparent)}
+.beam-shimmer-wrap::after{content:'';position:absolute;top:0;left:0;height:100%;width:50%;transform:translateX(-200%);background:linear-gradient(95deg,transparent 15%,rgba(255,255,255,.28) 50%,transparent 85%)}
 .btn-beam:hover .beam-shimmer-wrap::after{animation:shimmerPass 1.5s infinite}
 /* Hero beam button (larger) */
 .btn-beam-hero .beam-inner{padding:.8rem 2rem;font-size:.9rem;gap:.65rem}
