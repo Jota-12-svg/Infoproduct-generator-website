@@ -315,6 +315,130 @@ AI Generating
 </div>
 </section>
 
+<!-- ══════════════════════════════════════════════ -->
+<!-- HOW IT WORKS — Pipeline section styles       -->
+<!-- ══════════════════════════════════════════════ -->
+<style>
+.section-pipeline{position:relative;padding:9rem 0 12rem;background:var(--color-bg)}
+.section-pipeline::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07) 30%,rgba(51,210,255,.12) 50%,rgba(255,255,255,.07) 70%,transparent);z-index:1}
+/* sp-bg gets overflow:hidden so blobs are clipped without breaking sticky */
+.sp-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sp-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:40px 40px}
+.sp-blob-v{width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,.09),transparent 70%);top:-60px;left:-60px;animation:subtleDrift 18s ease-in-out infinite}
+.sp-blob-c{width:380px;height:380px;background:radial-gradient(circle,rgba(51,210,255,.06),transparent 70%);bottom:5%;right:15%;animation:subtleDrift 24s ease-in-out infinite reverse}
+.sp-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:36% 64%;gap:4rem;align-items:start}
+@media(max-width:900px){.sp-inner{grid-template-columns:1fr;gap:3rem}}
+.sp-info{position:sticky;top:8rem}
+@media(max-width:900px){.sp-info{position:relative;top:0}}
+.sp-tagline{display:flex;align-items:center;gap:.625rem;font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--color-cyan);margin-bottom:1.75rem}
+.sp-tagline-dot{width:7px;height:7px;border-radius:50%;background:var(--color-cyan);box-shadow:0 0 8px rgba(51,210,255,.65);flex-shrink:0}
+.sp-h2{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.045em;line-height:1.06;color:#fff;margin-bottom:1.25rem}
+.sp-h2-grad{background:linear-gradient(130deg,var(--color-cyan) 0%,var(--color-violet) 60%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;background-size:220% 220%;animation:shimmer 8s ease-in-out infinite}
+.sp-sub{font-family:var(--font-body);font-size:.95rem;color:var(--color-muted);line-height:1.72;max-width:36ch;margin-bottom:2.75rem}
+.sp-stats{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.sp-stat{display:flex;flex-direction:column;gap:.2rem}
+.sp-stat-val{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.03em}
+.sp-stat-label{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-dim)}
+.sp-stat-sep{width:1px;height:32px;background:rgba(255,255,255,.07);flex-shrink:0}
+.sp-stack-wrap{padding:2rem 0}
+.sp-stack{position:relative;display:flex;flex-direction:column;gap:10rem;width:100%}
+.sp-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.sp-card{position:relative;z-index:2;width:44%;max-width:320px;background:rgba(17,17,22,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);border-radius:1.25rem;padding:1.75rem;cursor:default;opacity:0;transform:translateY(28px) scale(.98);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out),border-color .4s,box-shadow .4s,background .4s}
+.sp-card.visible{opacity:1;transform:translateY(0) scale(1)}
+.sp-card:hover{background:rgba(17,17,22,.95);border-color:rgba(51,210,255,.22);box-shadow:0 16px 40px -12px rgba(51,210,255,.16)}
+.sp-card.visible:hover{transform:translateY(-3px) scale(1)}
+.sp-left{align-self:flex-start;margin-right:auto}
+.sp-right{align-self:flex-end;margin-left:auto}
+.sp-node{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:rgba(51,210,255,.12);border:1.5px solid rgba(51,210,255,.2);transform:translateY(-50%);transition:all .6s var(--ease-out);z-index:5}
+.sp-node-right{right:-6px}
+.sp-node-left{left:-6px}
+.sp-card.visible .sp-node{background:var(--color-cyan);border-color:rgba(51,210,255,.75);box-shadow:0 0 14px rgba(51,210,255,.65),0 0 28px rgba(51,210,255,.25)}
+.sp-step-label{font-family:var(--font-mono);font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--color-cyan);margin-bottom:.625rem}
+.sp-step-title{font-family:var(--font-display);font-size:1.15rem;font-weight:600;letter-spacing:-.025em;color:#fff;margin-bottom:.6rem}
+.sp-step-desc{font-family:var(--font-body);font-size:.82rem;color:var(--color-muted);line-height:1.65}
+</style>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- HOW IT WORKS — Pipeline section HTML           -->
+<!-- ══════════════════════════════════════════════ -->
+<section class="section-pipeline" id="how-it-works">
+<div class="sp-bg">
+<div class="sp-grid"></div>
+<div class="blob sp-blob-v"></div>
+<div class="blob sp-blob-c"></div>
+</div>
+<div class="sp-inner">
+<!-- LEFT: Sticky headline -->
+<div class="sp-info">
+<div class="sp-tagline"><span class="sp-tagline-dot"></span>How It Works</div>
+<h2 class="sp-h2">Five steps.<span class="sp-h2-grad">Zero guesswork.</span></h2>
+<p class="sp-sub">A fully automated pipeline that turns your topic into a high-converting e-book — grounded in real market intelligence at every stage.</p>
+<div class="sp-stats">
+<div class="sp-stat"><div class="sp-stat-val">~5 min</div><div class="sp-stat-label">avg. generation</div></div>
+<div class="sp-stat-sep"></div>
+<div class="sp-stat"><div class="sp-stat-val">100%</div><div class="sp-stat-label">AI-powered</div></div>
+<div class="sp-stat-sep"></div>
+<div class="sp-stat"><div class="sp-stat-val">0</div><div class="sp-stat-label">manual steps</div></div>
+</div>
+</div>
+<!-- RIGHT: Cards + animated SVG line -->
+<div class="sp-stack-wrap">
+<div class="sp-stack" id="pipeline-stack">
+<svg class="sp-svg" id="pipeline-svg" aria-hidden="true">
+<defs>
+<filter id="glow-line" x="-50%" y="-50%" width="200%" height="200%">
+<feGaussianBlur stdDeviation="4.5" result="blur"/>
+<feComposite in="SourceGraphic" in2="blur" operator="over"/>
+</filter>
+<linearGradient id="glow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" stop-color="rgba(51,210,255,0.15)"/>
+<stop offset="50%" stop-color="rgba(51,210,255,1)"/>
+<stop offset="100%" stop-color="rgba(51,210,255,0.15)"/>
+</linearGradient>
+</defs>
+<path id="pipeline-path-base" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+<path id="pipeline-path-glow" fill="none" stroke="url(#glow-grad)" stroke-width="2.5" filter="url(#glow-line)" style="transition:stroke-dashoffset .12s ease-out"/>
+</svg>
+<!-- Step 1 — left -->
+<div class="sp-card sp-left" data-index="0">
+<div class="sp-node sp-node-right"></div>
+<div class="sp-step-label">Step 01 // Input</div>
+<div class="sp-step-title">Define Your Topic</div>
+<div class="sp-step-desc">Drop your niche, theme, or keyword. That's all we need to kick off the entire pipeline.</div>
+</div>
+<!-- Step 2 — right -->
+<div class="sp-card sp-right" data-index="1">
+<div class="sp-node sp-node-left"></div>
+<div class="sp-step-label">Step 02 // Research</div>
+<div class="sp-step-title">Deep Market Analysis</div>
+<div class="sp-step-desc">Our AI scans thousands of buyer pain points, forums, and trend signals to map exactly what your audience craves.</div>
+</div>
+<!-- Step 3 — left -->
+<div class="sp-card sp-left" data-index="2">
+<div class="sp-node sp-node-right"></div>
+<div class="sp-step-label">Step 03 // Architecture</div>
+<div class="sp-step-title">Intelligent Structure</div>
+<div class="sp-step-desc">A proven chapter framework built — hooks, flow, callouts, and pacing optimized for engagement and conversions.</div>
+</div>
+<!-- Step 4 — right -->
+<div class="sp-card sp-right" data-index="3">
+<div class="sp-node sp-node-left"></div>
+<div class="sp-step-label">Step 04 // Generation</div>
+<div class="sp-step-title">AI Writing Engine</div>
+<div class="sp-step-desc">High-quality, authoritative prose generated at speed. Every word crafted to captivate, convert, and build authority.</div>
+</div>
+<!-- Step 5 — left -->
+<div class="sp-card sp-left" data-index="4">
+<div class="sp-node sp-node-right"></div>
+<div class="sp-step-label">Step 05 // Delivery</div>
+<div class="sp-step-title">Export & Publish</div>
+<div class="sp-step-desc">Download your complete, formatted e-book — ready to list, sell, and scale in minutes.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <!-- Lucide icons init -->
 <script src="../assets/5e943127343691a9_lucide.min.js"></script>
 <script>
@@ -352,6 +476,68 @@ wrap.style.transform=`translate(${cX.toFixed(2)}px,${cY.toFixed(2)}px) scale(1.0
 requestAnimationFrame(loop);
 }
 loop();
+})();
+</script>
+<script>
+// Pipeline scroll-driven animation
+(function(){
+const stack=document.getElementById('pipeline-stack');
+const pathBase=document.getElementById('pipeline-path-base');
+const pathGlow=document.getElementById('pipeline-path-glow');
+if(!stack||!pathBase||!pathGlow)return;
+const cards=stack.querySelectorAll('.sp-card');
+let pathLength=0;
+
+function drawCurve(){
+if(cards.length<2)return;
+const rect=stack.getBoundingClientRect();
+const pts=Array.from(cards).map(card=>{
+const cr=card.getBoundingClientRect();
+const isLeft=card.classList.contains('sp-left');
+const x=isLeft?(cr.right-rect.left)+6:(cr.left-rect.left)-6;
+const y=(cr.top-rect.top)+(cr.height/2);
+return{x,y,isLeft};
+});
+let d=`M ${pts[0].x} ${pts[0].y} `;
+for(let i=1;i<pts.length;i++){
+const p=pts[i-1],c=pts[i];
+const dy=c.y-p.y;
+const curve=Math.max(Math.abs(c.x-p.x)*.45,dy*.4,60);
+const cp1x=p.isLeft?p.x+curve:p.x-curve;
+const cp2x=c.isLeft?c.x+curve:c.x-curve;
+d+=`C ${cp1x} ${p.y}, ${cp2x} ${c.y}, ${c.x} ${c.y} `;
+}
+pathBase.setAttribute('d',d);
+pathGlow.setAttribute('d',d);
+pathLength=pathBase.getTotalLength();
+pathGlow.style.strokeDasharray=pathLength;
+pathGlow.style.strokeDashoffset=pathLength;
+updateScroll();
+}
+
+function updateScroll(){
+if(!pathLength)return;
+const rect=stack.getBoundingClientRect();
+const vh=window.innerHeight;
+const start=rect.top-vh*.72;
+const end=rect.bottom-vh*.38;
+let p=-start/(end-start);
+p=Math.max(0,Math.min(1,p));
+pathGlow.style.strokeDashoffset=pathLength*(1-p);
+}
+
+// Card + node reveal
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+});
+},{threshold:0.18,rootMargin:'0px 0px -8% 0px'});
+cards.forEach(c=>obs.observe(c));
+
+window.addEventListener('scroll',updateScroll,{passive:true});
+if(window.ResizeObserver){new ResizeObserver(drawCurve).observe(stack);}
+else window.addEventListener('resize',drawCurve);
+setTimeout(drawCurve,150);
 })();
 </script>
 </body>
