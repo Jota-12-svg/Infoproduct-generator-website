@@ -1,0 +1,26 @@
+/* Vision section lyric-word scroll animation */
+#vision .lyric-word{display:inline-block;opacity:.16;color:rgba(255,255,255,.22);transform:translateY(18px) scale(.98);filter:blur(2px);transition:opacity .55s ease,color .55s ease,transform .55s ease,filter .55s ease,text-shadow .55s ease}
+#vision .lyric-word.is-active{opacity:1;color:#c084fc;transform:translateY(0) scale(1);filter:blur(0);text-shadow:0 0 18px rgba(168,85,247,.75),0 0 42px rgba(168,85,247,.35)}
+#vision .lyric-word.is-past{opacity:1;color:#ffffff;transform:translateY(0) scale(1);filter:blur(0);text-shadow:0 0 18px rgba(255,255,255,.08)}
+/* Testimonials section scrollbar and reveal animations */
+#testimonials .no-scrollbar::-webkit-scrollbar{display:none}
+#testimonials .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+#testimonials .purple-card-border{background:linear-gradient(#0b0b0d,#0b0b0d) padding-box,linear-gradient(145deg,rgba(168,85,247,.35) 0%,rgba(255,255,255,.08) 42%,rgba(255,255,255,0) 100%) border-box;border:1px solid transparent}
+#testimonials .reveal-fade{opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease}
+#testimonials .reveal-word{transform:translateY(110%);transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+#testimonials.is-visible .reveal-fade{opacity:1;transform:translateY(0)}
+#testimonials.is-visible .reveal-word{transform:translateY(0)}
+#testimonials.is-visible .reveal-word-delay{transition-delay:.12s}
+/* Pricing 3D stage interactions */
+@media (min-width:1024px){
+.pricing-stage{perspective:2500px;transform-style:preserve-3d}
+.pricing-card{transition:transform .65s cubic-bezier(.2,.8,.2,1),opacity .55s ease,filter .55s ease,box-shadow .55s ease,border-color .55s ease;transform-style:preserve-3d;will-change:transform,opacity,filter}
+.pricing-card-1{transform:rotateY(16deg) translateZ(-60px) translateX(65px);z-index:15}
+.pricing-card-2{transform:rotateY(0deg) translateZ(60px) scale(1.05);z-index:20;box-shadow:0 40px 80px -30px rgba(59,130,246,.3)}
+.pricing-card-3{transform:rotateY(-16deg) translateZ(-60px) translateX(-65px);z-index:15}
+.pricing-stage[data-active] .pricing-card{opacity:.24;filter:blur(5px);z-index:0}
+.pricing-stage[data-active="1"] .pricing-card-1,.pricing-stage[data-active="2"] .pricing-card-2,.pricing-stage[data-active="3"] .pricing-card-3{opacity:1;filter:blur(0);z-index:90}
+.pricing-stage[data-active="1"] .pricing-card-1{transform:rotateY(0deg) translateZ(170px) scale(1.17) translateX(150px);border-color:rgba(217,70,239,.6);box-shadow:0 0 105px -20px rgba(217,70,239,.36)}
+.pricing-stage[data-active="2"] .pricing-card-2{transform:rotateY(0deg) translateZ(160px) scale(1.12);border-color:rgba(96,165,250,.6);box-shadow:0 0 115px -20px rgba(59,130,246,.45)}
+.pricing-stage[data-active="3"] .pricing-card-3{transform:rotateY(0deg) translateZ(170px) scale(1.17) translateX(-150px);border-color:rgba(255,255,255,.45);box-shadow:0 0 105px -20px rgba(255,255,255,.18)}
+}

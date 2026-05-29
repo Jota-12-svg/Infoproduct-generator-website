@@ -1,0 +1,11 @@
+- **Tailwind CSS** — utility-first CSS framework (CDN runtime) used for all layout, spacing, color, and responsive styling
+- **Lucide** — icon library loaded via unpkg CDN; icons rendered with `lucide.createIcons()` at page load
+- **Three.js r160** — WebGL 3D library loaded as ES module from jsDelivr CDN; used for the interactive globe scene with particle dots, arc tubes, traffic spheres, torus rings, and atmosphere meshes
+- **Inter** — Google Fonts typeface (weights 400–800) used as the primary UI font throughout the page
+- **Google Tag Manager / GA4** — analytics script (`G-2M6V79H761`) injected via gtag.js for page-view tracking
+- **IntersectionObserver API** — native browser API used by three separate feature scripts (lyric reveal, testimonials reveal, video autoplay) to trigger animations on scroll
+- **CSS Custom Animations** — hand-authored keyframe animations: `navDrop`, `softIn`, `lineReveal`, `ctaRise`, `shimmer`, `floatBolt`, `logoFade`, `pedestalPulse`, `scrollMarquee`, `rotateCubeY`
+- **CSS 3D Transforms / perspective** — used for the pricing card stage (`perspective: 2500px`) and process cards (`perspective: 1400px`) to create depth and tilt effects
+- **CSS backdrop-filter blur** — applied extensively to nav, cards, and modals for frosted-glass surfaces
+- **HTML5 Video** — background video element with `data-aura-video-preset="loop-in-view"` auto-played via IntersectionObserver
+- **Supabase Storage** — CDN (`hoirqrkdgbmvpwutwuwj.supabase.co`) used to serve all images and the hero background video
