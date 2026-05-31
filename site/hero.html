@@ -775,12 +775,10 @@ let pathLength=0;
 
 function drawCurve(){
 if(cards.length<2)return;
-const rect=stack.getBoundingClientRect();
 const pts=Array.from(cards).map(card=>{
-const cr=card.getBoundingClientRect();
 const isLeft=card.classList.contains('sp-left');
-const x=isLeft?(cr.right-rect.left)+6:(cr.left-rect.left)-6;
-const y=(cr.top-rect.top)+(cr.height/2);
+const x=isLeft?(card.offsetLeft+card.offsetWidth):card.offsetLeft;
+const y=card.offsetTop+card.offsetHeight/2;
 return{x,y,isLeft};
 });
 let d=`M ${pts[0].x} ${pts[0].y} `;
