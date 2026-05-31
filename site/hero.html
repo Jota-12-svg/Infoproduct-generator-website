@@ -251,7 +251,7 @@ Generate My E-Book
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 </span>
 </a>
-<a class="btn-glass" href="#how-it-works">
+<a class="btn-glass" href="#demo">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
 Watch Demo
 </a>
@@ -514,7 +514,7 @@ AI Generating
 @media(max-width:900px){.sp-inner{grid-template-columns:1fr;gap:3rem}}
 .sp-info{position:sticky;top:8rem}
 @media(max-width:900px){.sp-info{position:relative;top:0}}
-.sp-tagline{display:flex;align-items:center;gap:.625rem;font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--color-cyan);margin-bottom:1.75rem}
+.sp-tagline{display:inline-flex;align-items:center;gap:.625rem;padding:.3rem 1rem .3rem .75rem;border-radius:9999px;border:1px solid rgba(51,210,255,.2);background:rgba(51,210,255,.04);font-family:var(--font-mono);font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--color-cyan);margin-bottom:1.75rem}
 .sp-tagline-dot{width:7px;height:7px;border-radius:50%;background:var(--color-cyan);box-shadow:0 0 8px rgba(51,210,255,.65);flex-shrink:0}
 .sp-h2{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.045em;line-height:1.06;color:#fff;margin-bottom:1.25rem}
 .sp-h2-grad{background:linear-gradient(130deg,var(--color-cyan) 0%,var(--color-violet) 60%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;background-size:220% 220%;animation:shimmer 8s ease-in-out infinite}
@@ -554,7 +554,7 @@ AI Generating
 <div class="sp-inner">
 <!-- LEFT: Sticky headline -->
 <div class="sp-info">
-<div class="sp-tagline"><span class="sp-tagline-dot"></span>How It Works</div>
+<div class="sp-tagline"><span class="sf-tag-dot"></span><span style="color:var(--color-dim);font-weight:400">03</span>&ensp;—&ensp;How It Works</div>
 <h2 class="sp-h2">Five steps.<span class="sp-h2-grad">Zero guesswork.</span></h2>
 <p class="sp-sub">A fully automated pipeline that turns your topic into a high-converting e-book — grounded in real market intelligence at every stage.</p>
 <div class="sp-stats">
@@ -617,6 +617,113 @@ AI Generating
 <div class="sp-step-label">Step 05 // Delivery</div>
 <div class="sp-step-title">Export & Publish</div>
 <div class="sp-step-desc">Download your complete, formatted e-book — ready to list, sell, and scale in minutes.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- DEMO — Section styles                          -->
+<!-- ══════════════════════════════════════════════ -->
+<style>
+.section-demo{position:relative;padding:8rem 0 10rem;background:var(--color-bg)}
+.section-demo::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06) 30%,rgba(51,210,255,.12) 50%,rgba(255,255,255,.06) 70%,transparent);z-index:1}
+.sd-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sd-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:40px 40px}
+.sd-blob{width:700px;height:700px;background:radial-gradient(circle,rgba(139,92,246,.07),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);animation:subtleDrift 22s ease-in-out infinite}
+.sd-inner{max-width:1320px;margin:0 auto;padding:0 2rem}
+/* Header */
+.sd-header{text-align:center;margin-bottom:4rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.sd-headline{font-family:var(--font-display);font-size:clamp(2.5rem,4.5vw,4rem);font-weight:700;letter-spacing:-.055em;line-height:1.05;color:#fff}
+.sd-hl-grad{background:linear-gradient(130deg,var(--color-cyan) 0%,var(--color-violet) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:220% 220%;animation:shimmer 7s ease-in-out infinite;display:inline}
+.sd-sub{font-family:var(--font-body);font-size:1rem;color:var(--color-muted);max-width:48ch;line-height:1.7;margin:0}
+/* Video wrap + corner brackets */
+.sd-video-wrap{position:relative;max-width:960px;margin:0 auto;padding:12px}
+.sd-corner{position:absolute;width:18px;height:18px}
+.sd-corner-tl{top:0;left:0;border-top:1.5px solid rgba(51,210,255,.45);border-left:1.5px solid rgba(51,210,255,.45)}
+.sd-corner-tr{top:0;right:0;border-top:1.5px solid rgba(51,210,255,.45);border-right:1.5px solid rgba(51,210,255,.45)}
+.sd-corner-bl{bottom:0;left:0;border-bottom:1.5px solid rgba(51,210,255,.45);border-left:1.5px solid rgba(51,210,255,.45)}
+.sd-corner-br{bottom:0;right:0;border-bottom:1.5px solid rgba(51,210,255,.45);border-right:1.5px solid rgba(51,210,255,.45)}
+/* Video frame */
+.sd-video-frame{background:rgba(10,10,14,.97);border:1px solid rgba(51,210,255,.14);border-radius:1.25rem;overflow:hidden;box-shadow:0 0 80px -20px rgba(51,210,255,.14),0 40px 100px -30px rgba(0,0,0,.7);transition:box-shadow .6s var(--ease-out),border-color .6s}
+.sd-video-frame:hover{box-shadow:0 0 120px -15px rgba(51,210,255,.22),0 40px 100px -30px rgba(0,0,0,.7);border-color:rgba(51,210,255,.26)}
+/* Browser chrome */
+.sd-chrome{display:flex;align-items:center;gap:.875rem;padding:.875rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.025)}
+.sd-chrome-dots{display:flex;gap:.45rem;flex-shrink:0}
+.sd-chrome-dot{width:10px;height:10px;border-radius:50%}
+.sd-chrome-dot:nth-child(1){background:rgba(255,95,87,.45)}
+.sd-chrome-dot:nth-child(2){background:rgba(255,189,46,.45)}
+.sd-chrome-dot:nth-child(3){background:rgba(39,201,63,.45)}
+.sd-chrome-bar{flex:1;max-width:320px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:9999px;padding:.28rem 1rem;display:flex;align-items:center;gap:.5rem}
+.sd-chrome-bar-dot{width:5px;height:5px;border-radius:50%;background:var(--color-cyan);box-shadow:0 0 6px rgba(51,210,255,.7);flex-shrink:0;animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+.sd-chrome-url{font-family:var(--font-mono);font-size:.6rem;color:var(--color-dim);letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Video placeholder area */
+.sd-video-area{position:relative;aspect-ratio:16/9;background:rgba(3,3,4,.88);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sd-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.sd-scan{position:absolute;top:0;left:0;right:0;height:55%;background:linear-gradient(to bottom,transparent,rgba(51,210,255,.022),transparent);pointer-events:none;animation:scanLine 9s ease-in-out infinite}
+/* Play button */
+.sd-play{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.5rem;z-index:2}
+.sd-play-btn{position:relative;width:76px;height:76px;border-radius:50%;background:rgba(51,210,255,.07);border:1.5px solid rgba(51,210,255,.25);display:flex;align-items:center;justify-content:center;color:var(--color-cyan);cursor:pointer;transition:all .45s var(--ease-out);backdrop-filter:blur(16px)}
+.sd-play-btn:hover{background:rgba(51,210,255,.16);border-color:rgba(51,210,255,.55);transform:scale(1.1);box-shadow:0 0 40px rgba(51,210,255,.3)}
+.sd-play-ring{position:absolute;inset:-16px;border-radius:50%;border:1px solid rgba(51,210,255,.15);animation:ping 2.8s cubic-bezier(0,0,.2,1) infinite}
+.sd-play-ring-2{position:absolute;inset:-32px;border-radius:50%;border:1px solid rgba(51,210,255,.07);animation:ping 2.8s cubic-bezier(0,0,.2,1) infinite;animation-delay:.65s}
+.sd-play-label{font-family:var(--font-mono);font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--color-muted)}
+/* Bottom bar */
+.sd-video-bottom{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.375rem;border-top:1px solid rgba(255,255,255,.045);background:rgba(255,255,255,.015)}
+.sd-duration{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-dim)}
+.sd-live-badge{display:flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-cyan)}
+.sd-live-dot{width:5px;height:5px;border-radius:50%;background:var(--color-cyan);box-shadow:0 0 6px rgba(51,210,255,.7);animation:ping 1.5s cubic-bezier(0,0,.2,1) infinite}
+</style>
+<!-- ══════════════════════════════════════════════ -->
+<!-- DEMO — Section HTML                            -->
+<!-- ══════════════════════════════════════════════ -->
+<section class="section-demo" id="demo">
+<div class="sd-bg"><div class="sd-grid"></div><div class="blob sd-blob"></div></div>
+<div class="sd-inner">
+<!-- Header -->
+<div class="sd-header">
+<h2 class="sd-headline">Watch it <span class="sd-hl-grad">happen.</span></h2>
+<p class="sd-sub">From a single prompt to a complete, publish-ready e-book — in under 5 minutes.</p>
+</div>
+<!-- Video box -->
+<div class="sd-video-wrap">
+<div class="sd-corner sd-corner-tl"></div>
+<div class="sd-corner sd-corner-tr"></div>
+<div class="sd-corner sd-corner-bl"></div>
+<div class="sd-corner sd-corner-br"></div>
+<div class="sd-video-frame">
+<!-- Browser chrome -->
+<div class="sd-chrome">
+<div class="sd-chrome-dots">
+<span class="sd-chrome-dot"></span>
+<span class="sd-chrome-dot"></span>
+<span class="sd-chrome-dot"></span>
+</div>
+<div class="sd-chrome-bar">
+<span class="sd-chrome-bar-dot"></span>
+<span class="sd-chrome-url">infoproduct-generator.app/generate</span>
+</div>
+</div>
+<!-- Video placeholder -->
+<div class="sd-video-area">
+<div class="sd-grid-overlay"></div>
+<div class="sd-scan"></div>
+<div class="sd-play">
+<div style="position:relative">
+<div class="sd-play-ring"></div>
+<div class="sd-play-ring-2"></div>
+<button class="sd-play-btn" aria-label="Play demo video">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="margin-left:3px"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+</button>
+</div>
+<span class="sd-play-label">Play Demo</span>
+</div>
+</div>
+<!-- Bottom status bar -->
+<div class="sd-video-bottom">
+<span class="sd-duration">Demo &nbsp;·&nbsp; 4:32</span>
+<div class="sd-live-badge"><span class="sd-live-dot"></span>AI Generating</div>
 </div>
 </div>
 </div>
