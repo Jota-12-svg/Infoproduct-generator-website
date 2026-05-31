@@ -192,11 +192,10 @@ nav.navbar.scrolled{background:rgba(3,3,4,.88);backdrop-filter:blur(24px);-webki
 </div>
 <div class="nav-cta">
 <a class="btn-beam" href="#get-started">
-<div class="beam-border"><div class="beam-spin"></div></div>
 <div class="beam-shimmer-wrap"></div>
 <span class="beam-inner" style="padding:.55rem 1.25rem;font-size:.75rem">
 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-Start Free
+Start Generating
 </span>
 </a>
 </div>
@@ -243,7 +242,6 @@ AI-Powered E-Book Creation
 <!-- CTAs -->
 <div class="hero-cta cta-animate">
 <a class="btn-beam btn-beam-hero" href="#get-started">
-<div class="beam-border"><div class="beam-spin"></div></div>
 <div class="beam-shimmer-wrap"></div>
 <span class="beam-inner">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -288,10 +286,6 @@ Personalized Structure, Real Value, Zero Fluff
 <img class="hero-img" src="../Gemini_Generated_Image_gvp0tsgvp0tsgvp0.png" alt="AI generating a premium e-book" draggable="false"/>
 <div class="hero-img-overlay"></div>
 <div class="hero-img-scan"></div>
-</div>
-<div class="hero-img-tag">
-<span style="width:6px;height:6px;border-radius:50%;background:var(--color-cyan);box-shadow:0 0 8px rgba(51,210,255,.8);animation:ping 1.5s infinite"></span>
-AI Generating
 </div>
 </div>
 
@@ -861,6 +855,184 @@ AI Generating
 </div>
 </section>
 
+<!-- ═══════════════════════════════════════════ -->
+<!-- PRICING + CTA                               -->
+<!-- ═══════════════════════════════════════════ -->
+<style>
+/* ─── Pricing Section ─────────────────────────── */
+.section-pricing{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background-image:url('../Gemini_Generated_Image_gvp0tsgvp0tsgvp0.png');background-size:cover;background-position:center top;overflow:hidden}
+.section-pricing::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(3,3,4,1) 0%,rgba(3,3,4,.92) 6%,rgba(3,3,4,.72) 20%,rgba(3,3,4,.55) 40%,rgba(3,3,4,.6) 62%,rgba(3,3,4,.82) 85%,rgba(3,3,4,1) 100%);z-index:0}
+.section-pricing::after{content:'';position:absolute;top:0;left:0;right:0;height:280px;background:linear-gradient(to bottom,#030304 0%,#030304 8%,rgba(3,3,4,.92) 22%,rgba(3,3,4,.72) 45%,rgba(3,3,4,.35) 70%,transparent 100%);z-index:3;pointer-events:none}
+
+/* Blobs */
+.pr-blob{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:1}
+.pr-blob-1{width:640px;height:640px;background:radial-gradient(circle,rgba(51,210,255,.11),transparent 70%);top:-120px;right:-120px;animation:subtleDrift 20s ease-in-out infinite}
+.pr-blob-2{width:520px;height:520px;background:radial-gradient(circle,rgba(139,92,246,.14),transparent 70%);bottom:-100px;left:-100px;animation:subtleDrift 26s ease-in-out infinite reverse}
+
+/* Animate-on-scroll */
+@keyframes animationIn{0%{opacity:0;transform:translateY(28px);filter:blur(12px)}100%{opacity:1;transform:translateY(0);filter:blur(0px)}}
+.pr-animate{opacity:0}
+.pr-animate.in-view{animation:animationIn .85s cubic-bezier(0.16,1,0.3,1) forwards}
+
+/* Beam wrapper — padding creates the visible gap for the spinning border */
+.pr-beam-wrap{position:relative;z-index:4;border-radius:24px;padding:2px}
+.pr-beam-border{position:absolute;inset:0;overflow:hidden;border-radius:24px;opacity:.85;pointer-events:none}
+.pr-beam-spin{position:absolute;top:50%;left:50%;width:300%;height:300%;transform:translate(-50%,-50%);background:conic-gradient(from 0deg,transparent 0 340deg,var(--color-cyan) 360deg);animation:spin 3s linear infinite}
+
+/* Glass card */
+.pr-card{position:relative;z-index:1;background:rgba(9,9,16,.88);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-radius:21px;padding:2.75rem;width:min(500px,calc(100vw - 2rem));overflow:hidden}
+/* Card inner flashlight */
+.pr-card::before{content:'';position:absolute;inset:0;background:radial-gradient(600px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(51,210,255,.07),transparent 40%);pointer-events:none;z-index:0;transition:opacity .4s}
+/* Inner content above flashlight */
+.pr-card>*{position:relative;z-index:1}
+
+/* Top row */
+.pr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+.pr-badge{display:flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--color-cyan);background:rgba(51,210,255,.08);border:1px solid rgba(51,210,255,.22);padding:.35rem .8rem;border-radius:9999px}
+.pr-counter{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;color:var(--color-dim)}
+
+/* Icon */
+.pr-icon-wrap{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,rgba(51,210,255,.15),rgba(139,92,246,.1));border:1px solid rgba(51,210,255,.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;position:relative;overflow:hidden;animation:floatUp 6s ease-in-out infinite;flex-shrink:0}
+.pr-icon-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(255,255,255,.15),transparent 65%);z-index:0}
+
+/* Headline */
+.pr-headline{font-family:var(--font-display);font-size:clamp(1.65rem,3.5vw,2.1rem);font-weight:700;letter-spacing:-.04em;line-height:1.1;color:#fff;margin-bottom:1.75rem}
+.pr-headline-light{font-weight:400;color:var(--color-muted)}
+
+/* Price block */
+.pr-price-block{margin-bottom:1.5rem}
+.pr-price-row{display:flex;align-items:flex-end;gap:.05rem;margin-bottom:.3rem}
+.pr-currency{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--color-cyan);align-self:flex-start;margin-top:.55rem;line-height:1}
+.pr-amount{font-family:var(--font-display);font-size:clamp(3.2rem,7vw,4.5rem);font-weight:800;letter-spacing:-.06em;line-height:1;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.82) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pr-cents{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:rgba(255,255,255,.65);align-self:flex-start;margin-top:.55rem;line-height:1}
+.pr-period{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;color:var(--color-muted);margin-left:.5rem;margin-bottom:.5rem}
+.pr-price-sub{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;color:var(--color-dim);text-transform:uppercase}
+
+/* Divider */
+.pr-divider{height:1px;background:linear-gradient(90deg,rgba(51,210,255,.18),rgba(139,92,246,.1),transparent);margin-bottom:1.5rem}
+
+/* Features */
+.pr-features{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
+.pr-feature-item{display:flex;align-items:center;gap:.75rem;font-family:var(--font-body);font-size:.875rem;color:var(--color-muted);transition:color .3s}
+.pr-feature-item:hover{color:var(--color-text)}
+.pr-check{display:flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:rgba(51,210,255,.1);border:1px solid rgba(51,210,255,.28);color:var(--color-cyan);font-size:.6rem;flex-shrink:0;font-weight:700}
+
+/* CTA */
+.pr-cta-wrap{margin-bottom:1.25rem}
+.pr-cta-btn{width:100%;justify-content:center}
+.pr-beam-inner{width:100%;justify-content:center!important;padding:.9rem 2rem!important;font-size:.9rem!important;background:rgba(5,5,12,.92)!important;letter-spacing:.05em;text-transform:uppercase}
+.pr-cta-btn:hover .pr-beam-inner{background:rgba(51,210,255,.07)!important;box-shadow:0 0 40px rgba(51,210,255,.22),0 0 80px rgba(51,210,255,.08)!important}
+
+/* Trust */
+.pr-trust{display:flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-dim)}
+.pr-trust-dot{width:5px;height:5px;border-radius:50%;background:var(--color-cyan);box-shadow:0 0 7px rgba(51,210,255,.7);animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite;flex-shrink:0}
+
+/* Section label */
+.pr-section-label{position:absolute;bottom:2rem;left:2.5rem;display:flex;flex-direction:column;gap:.3rem;z-index:4}
+.pr-label-num{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.18em;color:var(--color-dim);text-transform:uppercase}
+.pr-label-text{font-family:var(--font-display);font-size:.7rem;font-weight:600;letter-spacing:.14em;color:var(--color-muted);text-transform:uppercase}
+
+@media(max-width:480px){.pr-card{padding:2rem 1.5rem}.pr-headline{font-size:1.45rem}}
+</style>
+
+<section class="section-pricing" id="pricing">
+  <!-- Ambient blobs -->
+  <div class="pr-blob pr-blob-1"></div>
+  <div class="pr-blob pr-blob-2"></div>
+
+  <!-- Beam-bordered pricing card -->
+  <div class="pr-beam-wrap pr-animate" style="animation-delay:.12s">
+    <div class="pr-beam-border" aria-hidden="true">
+      <div class="pr-beam-spin"></div>
+    </div>
+
+    <div class="pr-card" onmousemove="setFlashlight(this,event)">
+
+      <!-- Top: badge + counter -->
+      <div class="pr-top pr-animate" style="animation-delay:.22s">
+        <div class="pr-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Pro Plan
+        </div>
+        <span class="pr-counter">01 / 01</span>
+      </div>
+
+      <!-- Icon -->
+      <div class="pr-icon-wrap pr-animate" style="animation-delay:.3s">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+
+      <!-- Headline -->
+      <h2 class="pr-headline pr-animate" style="animation-delay:.36s">
+        Everything you need.<br/><span class="pr-headline-light">One simple price.</span>
+      </h2>
+
+      <!-- Price -->
+      <div class="pr-price-block pr-animate" style="animation-delay:.42s">
+        <div class="pr-price-row">
+          <span class="pr-currency">$</span>
+          <span class="pr-amount">49</span>
+          <span class="pr-cents">.90</span>
+          <span class="pr-period">/month</span>
+        </div>
+        <p class="pr-price-sub">Billed monthly · Cancel anytime</p>
+      </div>
+
+      <!-- Divider -->
+      <div class="pr-divider pr-animate" style="animation-delay:.46s"></div>
+
+      <!-- Features -->
+      <ul class="pr-features pr-animate" style="animation-delay:.52s">
+        <li class="pr-feature-item">
+          <span class="pr-check">✓</span>
+          <span>Unlimited e-book generation</span>
+        </li>
+        <li class="pr-feature-item">
+          <span class="pr-check">✓</span>
+          <span>AI Research Engine — 50K+ market signals</span>
+        </li>
+        <li class="pr-feature-item">
+          <span class="pr-check">✓</span>
+          <span>All export formats: KDP, Gumroad, Hotmart</span>
+        </li>
+        <li class="pr-feature-item">
+          <span class="pr-check">✓</span>
+          <span>Sales copy &amp; conversion hooks included</span>
+        </li>
+        <li class="pr-feature-item">
+          <span class="pr-check">✓</span>
+          <span>Priority support &amp; new features</span>
+        </li>
+      </ul>
+
+      <!-- CTA button -->
+      <div class="pr-cta-wrap pr-animate" style="animation-delay:.6s">
+        <a class="btn-beam pr-cta-btn" href="#get-started">
+          <div class="beam-shimmer-wrap"></div>
+          <span class="beam-inner pr-beam-inner">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Start Generating Now
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Trust line -->
+      <p class="pr-trust pr-animate" style="animation-delay:.7s">
+        <span class="pr-trust-dot"></span>
+        Instant access · No contracts · Cancel anytime
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Section label -->
+  <div class="pr-section-label pr-animate" style="animation-delay:.08s">
+    <span class="pr-label-num">05 / 05</span>
+    <span class="pr-label-text">Pricing</span>
+  </div>
+</section>
+
 <!-- Lucide icons init -->
 <script src="../assets/5e943127343691a9_lucide.min.js"></script>
 <script>
@@ -1072,6 +1244,15 @@ window.addEventListener('scroll',updateScroll,{passive:true});
 if(window.ResizeObserver){new ResizeObserver(drawCurve).observe(stack);}
 else window.addEventListener('resize',drawCurve);
 setTimeout(drawCurve,150);
+})();
+// Pricing section: animate-on-scroll
+(function(){
+const io=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}
+});
+},{threshold:0.12});
+document.querySelectorAll('.pr-animate').forEach(el=>io.observe(el));
 })();
 </script>
 </body>
