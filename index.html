@@ -223,13 +223,15 @@ nav.navbar.scrolled{background:rgba(3,3,4,.88);backdrop-filter:blur(24px);-webki
   .sp-card{padding:1.5rem}
   .sp-sub{font-size:.9rem}
   /* Demo */
-  .sd-inner{padding:4rem 0 3rem}
+  .section-demo{padding:2rem 0 2rem!important}
+  .sd-inner{padding:0 1.5rem}
+  .sd-header{margin-bottom:1.5rem}
   .sd-headline{font-size:clamp(1.75rem,7vw,2.5rem)}
   .sd-sub{font-size:.9rem}
   .sd-play{width:56px;height:56px}
   .sd-video-wrap{border-radius:12px}
-  /* Testimonials */
-  .section-testimonials{padding:5rem 0 6rem}
+  /* Testimonials — desktop hidden, replaced by stm-mobile */
+  .section-testimonials{display:none!important}
   .st-headline{font-size:clamp(1.8rem,7vw,2.5rem)}
   .st-sub{font-size:.9rem}
   .st-card{padding:1.5rem}
@@ -1185,6 +1187,168 @@ Personalized Structure, Real Value, Zero Fluff
 </section>
 
 <!-- ═══════════════════════════════════════════ -->
+<!-- TESTIMONIALS MOBILE                         -->
+<!-- ═══════════════════════════════════════════ -->
+<style>
+.stm-mobile{display:none}
+@media(max-width:768px){
+  .stm-mobile{display:block;padding:3rem 1.5rem 4rem;background:var(--color-bg);position:relative;overflow:hidden;text-align:center}
+  /* Blobs */
+  .stm-blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+  .stm-blob-1{width:300px;height:300px;background:radial-gradient(circle,rgba(139,92,246,.08),transparent 70%);top:-60px;right:-60px;animation:subtleDrift 20s ease-in-out infinite}
+  .stm-blob-2{width:260px;height:260px;background:radial-gradient(circle,rgba(217,70,239,.06),transparent 70%);bottom:0;left:-40px;animation:subtleDrift 26s ease-in-out infinite reverse}
+  /* Tag */
+  .stm-tag{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--color-cyan);background:rgba(51,210,255,.07);border:1px solid rgba(51,210,255,.2);padding:.3rem .875rem .3rem .5rem;border-radius:9999px;margin-bottom:1.25rem}
+  .stm-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--color-cyan);box-shadow:0 0 8px rgba(51,210,255,.7);flex-shrink:0;animation:ping 1.5s cubic-bezier(0,0,.2,1) infinite}
+  /* Headline */
+  .stm-headline{font-family:var(--font-display);font-size:clamp(2rem,8vw,2.8rem);font-weight:700;letter-spacing:-.04em;line-height:1.05;color:#fff;margin-bottom:.75rem}
+  .stm-hl-grad{background:linear-gradient(130deg,var(--color-cyan) 0%,var(--color-violet) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:220% 220%;animation:shimmer 7s ease-in-out infinite;display:inline}
+  .stm-sub{font-family:var(--font-body);font-size:.875rem;color:var(--color-muted);margin-bottom:1.25rem}
+  /* Stats */
+  .stm-stats{display:flex;align-items:center;justify-content:center;gap:.875rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.08em;color:var(--color-dim);margin-bottom:2rem}
+  .stm-stats strong{color:var(--color-muted)}
+  .stm-stats-sep{width:1px;height:12px;background:rgba(255,255,255,.08)}
+  .stm-stars-sm{color:var(--color-lime)}
+  /* Card animation */
+  @keyframes stmCardIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+  /* Card */
+  .stm-card{display:none;flex-direction:column;gap:.875rem;text-align:left;background:rgba(17,17,22,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:1.75rem;position:relative;overflow:hidden;margin-bottom:1.25rem}
+  .stm-card.stm-active{display:flex;animation:stmCardIn .45s cubic-bezier(0.16,1,0.3,1) both}
+  .stm-card.stm-featured{background:linear-gradient(rgba(17,17,22,.88),rgba(17,17,22,.88)) padding-box,linear-gradient(145deg,rgba(51,210,255,.22) 0%,rgba(139,92,246,.1) 45%,transparent 100%) border-box;border:1px solid transparent}
+  /* Bg quote mark */
+  .stm-bg-quote{position:absolute;top:-.5rem;right:1rem;font-family:var(--font-display);font-size:8rem;font-weight:800;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none;z-index:0;letter-spacing:-.05em}
+  /* Stars */
+  .stm-stars{font-size:.82rem;color:var(--color-lime);letter-spacing:2px;text-shadow:0 0 8px rgba(163,230,53,.35);position:relative;z-index:1}
+  /* Quote */
+  .stm-quote{font-family:var(--font-body);font-size:.975rem;color:rgba(255,255,255,.86);line-height:1.76;position:relative;z-index:1;flex:1}
+  /* Metric badge */
+  .stm-metric{display:inline-flex;align-self:flex-start;font-family:var(--font-mono);font-size:.56rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .7rem;border-radius:9999px;background:linear-gradient(rgba(12,12,17,.95),rgba(12,12,17,.95)) padding-box,linear-gradient(90deg,rgba(51,210,255,.3),rgba(139,92,246,.2)) border-box;border:1px solid transparent;color:var(--color-cyan);position:relative;z-index:1}
+  /* Divider */
+  .stm-divider{height:1px;background:rgba(255,255,255,.06);position:relative;z-index:1}
+  /* Author */
+  .stm-author{display:flex;align-items:center;gap:.875rem;position:relative;z-index:1}
+  .stm-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.65rem;font-weight:700;flex-shrink:0}
+  .stm-author-info{display:flex;flex-direction:column;gap:.15rem}
+  .stm-name{font-family:var(--font-display);font-size:.9rem;font-weight:600;letter-spacing:-.01em;color:#fff}
+  .stm-role{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-dim)}
+  /* Navigation */
+  .stm-nav{display:flex;align-items:center;justify-content:space-between}
+  .stm-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--color-text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s,box-shadow .25s;flex-shrink:0}
+  .stm-btn:active{background:rgba(51,210,255,.1);border-color:rgba(51,210,255,.3);box-shadow:0 0 14px rgba(51,210,255,.18)}
+  /* Dots */
+  .stm-dots{display:flex;align-items:center;gap:.45rem}
+  .stm-dot{width:6px;height:6px;border-radius:9999px;background:rgba(255,255,255,.18);transition:width .3s var(--ease-out),background .3s,box-shadow .3s}
+  .stm-dot.stm-dot-active{width:22px;background:var(--color-cyan);box-shadow:0 0 8px rgba(51,210,255,.5)}
+}
+</style>
+
+<section class="stm-mobile">
+  <div class="stm-blob stm-blob-1"></div>
+  <div class="stm-blob stm-blob-2"></div>
+
+  <div class="stm-tag"><span class="stm-tag-dot"></span>05 · Social Proof</div>
+  <h2 class="stm-headline">From zero <span class="stm-hl-grad">to selling.</span></h2>
+  <p class="stm-sub">Real results from real creators. No fluff, just what happened.</p>
+
+  <div class="stm-stats">
+    <span><strong>2,400+</strong> creators</span>
+    <div class="stm-stats-sep"></div>
+    <span><strong>12,000+</strong> e-books</span>
+    <div class="stm-stats-sep"></div>
+    <span><span class="stm-stars-sm">★★★★★</span>&ensp;<strong>4.9</strong></span>
+  </div>
+
+  <div class="stm-slider" id="stm-slider">
+
+    <div class="stm-card stm-featured">
+      <div class="stm-bg-quote">"</div>
+      <div class="stm-stars">★★★★★</div>
+      <p class="stm-quote">"I generated my first e-book in 4 minutes and had it listed on Gumroad that same night. Made $1,800 in the first 3 days, without writing a single sentence. I thought something was wrong. Nothing was wrong."</p>
+      <div class="stm-metric">$1,800 in 3 days</div>
+      <div class="stm-divider"></div>
+      <div class="stm-author">
+        <div class="stm-avatar" style="background:rgba(51,210,255,.1);color:var(--color-cyan);border:1px solid rgba(51,210,255,.22)">AT</div>
+        <div class="stm-author-info"><div class="stm-name">Alex Torres</div><div class="stm-role">Gumroad Creator</div></div>
+      </div>
+    </div>
+
+    <div class="stm-card">
+      <div class="stm-bg-quote">"</div>
+      <div class="stm-stars">★★★★★</div>
+      <p class="stm-quote">"I was skeptical. The first chapter had hooks I genuinely wouldn't have thought of myself. My audience still doesn't know how fast I produce these. They just keep buying."</p>
+      <div class="stm-metric">Undetectable quality</div>
+      <div class="stm-divider"></div>
+      <div class="stm-author">
+        <div class="stm-avatar" style="background:rgba(163,230,53,.1);color:var(--color-lime);border:1px solid rgba(163,230,53,.22)">PS</div>
+        <div class="stm-author-info"><div class="stm-name">Priya Sharma</div><div class="stm-role">Health Creator · Teachable</div></div>
+      </div>
+    </div>
+
+    <div class="stm-card">
+      <div class="stm-bg-quote">"</div>
+      <div class="stm-stars">★★★★★</div>
+      <p class="stm-quote">"Eight months of staring at a blank page. Infoproduct Generator turned that 8-month block into a 5-minute output. The quality left me speechless. My email list couldn't tell the difference, and the sales proved it."</p>
+      <div class="stm-metric">8 months → 5 min</div>
+      <div class="stm-divider"></div>
+      <div class="stm-author">
+        <div class="stm-avatar" style="background:rgba(139,92,246,.1);color:#a78bfa;border:1px solid rgba(139,92,246,.22)">RK</div>
+        <div class="stm-author-info"><div class="stm-name">Rachel Kim</div><div class="stm-role">Business Coach · Hotmart</div></div>
+      </div>
+    </div>
+
+    <div class="stm-card stm-featured">
+      <div class="stm-bg-quote">"</div>
+      <div class="stm-stars">★★★★★</div>
+      <p class="stm-quote">"$4,200 in passive income. First month. Six e-books. Each one took less time than a coffee break to kick off. I've since quit my second job. I don't say that lightly."</p>
+      <div class="stm-metric">$4,200 first month</div>
+      <div class="stm-divider"></div>
+      <div class="stm-author">
+        <div class="stm-avatar" style="background:rgba(51,210,255,.1);color:var(--color-cyan);border:1px solid rgba(51,210,255,.22)">JL</div>
+        <div class="stm-author-info"><div class="stm-name">Jordan Lee</div><div class="stm-role">Side Hustle Creator</div></div>
+      </div>
+    </div>
+
+    <div class="stm-card">
+      <div class="stm-bg-quote">"</div>
+      <div class="stm-stars">★★★★★</div>
+      <p class="stm-quote">"I now offer e-book creation as a paid service to clients. Infoproduct Generator is my silent partner. Delivery in hours instead of weeks. Doubled my freelance income in 60 days and my clients think I'm a genius."</p>
+      <div class="stm-metric">Freelance income ×2</div>
+      <div class="stm-divider"></div>
+      <div class="stm-author">
+        <div class="stm-avatar" style="background:rgba(139,92,246,.1);color:#a78bfa;border:1px solid rgba(139,92,246,.22)">SN</div>
+        <div class="stm-author-info"><div class="stm-name">Sofia Navarro</div><div class="stm-role">Content Strategist</div></div>
+      </div>
+    </div>
+
+    <div class="stm-card">
+      <div class="stm-bg-quote">"</div>
+      <div class="stm-stars">★★★★★</div>
+      <p class="stm-quote">"Running 14 e-books across KDP and Gumroad now. All generated in a single afternoon. The built-in market research is what separates an e-book that actually sells from one that sits collecting digital dust."</p>
+      <div class="stm-metric">14 e-books · 1 afternoon</div>
+      <div class="stm-divider"></div>
+      <div class="stm-author">
+        <div class="stm-avatar" style="background:rgba(217,70,239,.1);color:var(--color-fuchsia);border:1px solid rgba(217,70,239,.22)">MW</div>
+        <div class="stm-author-info"><div class="stm-name">Marcus Webb</div><div class="stm-role">Info Publisher · KDP</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stm-nav">
+    <button class="stm-btn" id="stm-prev" aria-label="Anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    </button>
+    <div class="stm-dots" id="stm-dots">
+      <span class="stm-dot"></span><span class="stm-dot"></span><span class="stm-dot"></span>
+      <span class="stm-dot"></span><span class="stm-dot"></span><span class="stm-dot"></span>
+    </div>
+    <button class="stm-btn" id="stm-next" aria-label="Próximo">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
 <!-- PRICING + CTA                               -->
 <!-- ═══════════════════════════════════════════ -->
 <style>
@@ -1589,6 +1753,30 @@ btn.classList.remove('open');
 menu.style.display='none';
 btn.setAttribute('aria-expanded','false');
 }));
+})();
+// Testimonials mobile carousel
+(function(){
+const cards=document.querySelectorAll('.stm-card');
+const dots=document.querySelectorAll('.stm-dot');
+const prev=document.getElementById('stm-prev');
+const next=document.getElementById('stm-next');
+const slider=document.getElementById('stm-slider');
+if(!cards.length)return;
+let cur=0;
+function show(i){
+cards.forEach((c,j)=>c.classList.toggle('stm-active',j===i));
+dots.forEach((d,j)=>d.classList.toggle('stm-dot-active',j===i));
+cur=i;
+}
+prev.addEventListener('click',()=>show((cur-1+cards.length)%cards.length));
+next.addEventListener('click',()=>show((cur+1)%cards.length));
+let tx=0;
+slider.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;},{passive:true});
+slider.addEventListener('touchend',e=>{
+const diff=tx-e.changedTouches[0].clientX;
+if(Math.abs(diff)>40)show(diff>0?(cur+1)%cards.length:(cur-1+cards.length)%cards.length);
+},{passive:true});
+show(0);
 })();
 // Pipeline mobile: linha scroll-driven + steps reveal
 (function(){
